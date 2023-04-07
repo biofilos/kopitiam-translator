@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "save-dev": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.192",
+    "lodash": "^4.17.21"
+  }
+}

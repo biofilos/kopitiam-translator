@@ -13,9 +13,8 @@
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { debounce } from 'lodash';
-	import Radio from './Radio.svelte';
 	import Radiosection from './Radiosection.svelte';
-	import Minus from '../lib/icons/Minus.svelte';
+	import Minus from '../../lib/icons/Minus.svelte';
 
 	let beverages: KopiEng[] = [
 		{ kp: 'Kopi', en: 'Coffee' },
@@ -63,6 +62,7 @@
 	let currentBev: string;
 	$: currentBev = `${beverage} ${milk} ${milkLevel} ${sugar} ${strength} ${temp}`;
 	$: allDrinks;
+	$: milkLevel = milk === "o"? "": milkLevel
 
 	function countBeverages() {
 		let drink: string = `${beverage} ${milk} ${milkLevel} ${sugar} ${strength} ${temp}`;
@@ -84,9 +84,9 @@
 	}
 </script>
 
-<div class="ml-2 mr-2">
-	<div class="grid grid-cols-2 gap-2 landscape:hidden">
-		<h2 class="col-span-2">Order your coffee</h2>
+<div class="ml-2 mr-2 pt-4 pl-4 pr-4">
+	<div class="grid grid-cols-2 gap-2 landscape:hidden lg:landscape:grid">
+		<h2 class="col-span-2 text-center">Order your coffee</h2>
 		<Radiosection title={'Type'} radioGroup={beverages} bind:output={beverage} />
 		<Radiosection title={'Strength'} radioGroup={strengths} bind:output={strength} />
 		<Radiosection title={'Milk'} radioGroup={milks} bind:output={milk} />
@@ -116,12 +116,12 @@
 		<div class="ml-3">
 			<ul class="list-disc list-inside">
 				{#each allDrinks as bev, ix}
-					<li class=" mb-2 landscape:text-5xl">
+					<li class=" mb-2 landscape:text-5xl lg:landscape:text-sm">
 						{bev.num}
 						{bev.drink}
 						<button
 							on:click={() => remove1(ix)}
-							class="outline-none mobile-menu-button landscape:hidden text-red-500"
+							class="outline-none mobile-menu-button landscape:hidden lg:landscape:block text-red-500"
 						>
 							<Minus moreClasses={'inline cursor-pointer'} />
 						</button>

@@ -19,7 +19,7 @@
 	}
 </script>
 
-<div class="mb-5">
+<div class="mb-1">
 	<h2 class="text-center text-extrabold">{title}</h2>
 	<div class="mt-3 flex flex-col justify-center w-auto">
 		{#each radioGroup as { kp, en }, idx}
